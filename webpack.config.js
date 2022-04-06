@@ -1,19 +1,22 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { mainModule } = require('process');
 
 module.exports = {
   entry: path.join(__dirname, "src", "main.js"),
-  output: {
-    path: path.resolve(__dirname, "dist"),
-  },
   mode: 'development',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'main.js',
+  },
   module: {
     rules: [
       {
         test: /\.jsx?/,
-        exclude: /node_modules/,
+        exclude: /(node_modules)/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react']
           }
@@ -28,6 +31,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "src", "index.html"),
+      title: 'Development',
+      //template: 'index.html'
     }),
   ],
   devServer: {
@@ -35,17 +40,17 @@ module.exports = {
       publicPath: 'dist',
       directory: path.resolve(__dirname, 'dist'),
     },
-    compress: true,
-    port: 8080,
+    // compress: true,
+    // port: 8080,
     proxy: {
       '/api': 'http://localhost:3000',
     },
   },
-  performance: {
-    hints: false,
-    maxEntrypointSize: 512000,
-    maxAssetSize: 512000
-}
+//   performance: {
+//     hints: false,
+//     maxEntrypointSize: 512000,
+//     maxAssetSize: 512000
+// }
 }
 
 //in the script for package.json(it doesnt allow comments)

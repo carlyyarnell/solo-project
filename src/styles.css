@@ -1,3 +1,10 @@
 #root {
-  color: blueviolet;
+  color: white;
+  text-align: center;
+  font-family: fantasy;
+}
+
+body {
+  background-image: url('/nature\ image.jpeg');
+  background-size: cover;
 }
