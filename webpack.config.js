@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { mainModule } = require('process');
+//const { mainModule } = require('process');
 
 module.exports = {
   entry: path.join(__dirname, "src", "main.js"),
@@ -45,6 +45,8 @@ module.exports = {
     proxy: {
       '/api': 'http://localhost:3000',
     },
+    hot: true,
+    historyApiFallback: true,
   },
 //   performance: {
 //     hints: false,

@@ -1,10 +1,24 @@
 #root {
   color: white;
   text-align: center;
-  font-family: fantasy;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+header {
+  text-align: center;
 }
 
 body {
-  background-image: url('/nature\ image.jpeg');
+  /* background-image: url('/nature\ image.jpeg'); */
+  background-blend-mode: darken;
+  background: rgba(0, 0, 0, 0.5) url('/nature\ image.jpeg');
   background-size: cover;
 }
+
+#inputs {
+  display: flex;
+  border: white;
+  border-width: 0cm;
+}
+
+

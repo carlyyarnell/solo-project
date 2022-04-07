@@ -5,16 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack serve --open",
+    "dev": "export NODE_ENV=development && (webpack-dev-server --open & nodemon server/server.js)",
     "start": "node server/server.js",
     "build": "webpack"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.26.1",
     "express": "^4.17.3",
     "mongoose": "^6.2.10",
-    "nodemon": "^2.0.15",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
@@ -25,6 +25,7 @@
     "babel-loader": "^8.2.4",
     "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.5.0",
+    "nodemon": "^2.0.15",
     "style-loader": "^3.3.1",
     "webpack": "^5.71.0",
     "webpack-cli": "^4.9.2",

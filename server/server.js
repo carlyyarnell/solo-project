@@ -16,22 +16,20 @@ app.use(express.json());
 // connection.once('open', function() {
 //   console.log('MongoDB database connection established successfully');
 // })
-
-/**
-* Set our Express view engine as ejs.
-* This means whenever we call res.render, ejs will be used to compile the template.
-* ejs templates are located in the client/ directory
-*/
-//app.set('view engine', 'ejs');
-app.use('/build', express.static(path.join(__dirname, '../dist')));
-// serve index.html on the route '/'
-app.get('/', (req, res) => {
-  return res.status(200).sendFile(path.join(__dirname, '/src/index.html'));
+app.get('/home', (req, res) => {
+  return res.status(200).send('michelle');
 });
 
+app.use('/build', express.static(path.join(__dirname, '../dist')));
+
+// serve index.html on the route '/'
+// app.get('/', (req, res) => {
+//   return res.status(200).sendFile(path.join(__dirname, '/src/index.html'));
+// });
+
 
 app.get('/', (req, res) => {
-  res.status(200).send('I worked')
+  return res.status(200).send('Im so dumb')
 })
 // app.get('/', (req, res) => {
 //   return res.status(200).sendFile(path.join(__dirname, '../index.html'));
@@ -39,9 +37,8 @@ app.get('/', (req, res) => {
 // app.get('/', (req, res) => {
 //   return res.status(200).sendFile(path.resolve(__dirname, '../client/index.html'));
 // });
-app.get('/home', entryController.getAllEntries, (req, res) => {
-  return res.status(200).json(res.locals.gotEntries)
-});
+//entryController.getAllEntries,
+//.json(res.locals.gotEntries)
 
  app.post('/home', entryController.createEntry, (req, res) => {
   return res.status(200).json(res.locals.entries)
@@ -66,7 +63,7 @@ app.use((err, req, res, next) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
     status: 400,
-    message: { err: 'An error occurred' },
+    message: { err: 'A dumb error occurred' },
   };
   const errorObj = Object.assign(defaultErr, err);
   console.log(errorObj.log);
